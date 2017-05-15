@@ -106,13 +106,15 @@ articleView.create = function() {
     publishedOn: $('#article-published:checked').length ? new Date() : null
   });
 
-  
+
 
   // TODO: Use our interface to the Handblebars template to put this new article into the DOM:
   $('#articles').append(article.toHtml())
 
   // TODO: Activate the highlighting of any code blocks; look at the documentation for hljs to see how to do this by placing a callback function in the .each():
-  $('pre code').each();
+  $('pre code').each(function (i, block){
+    hljs.highlightBlock(block);
+  });
 
   // TODO: Show our export field, and export the new article as JSON, so it's ready to copy/paste ("Thanks, Larry!!!") into blogArticles.js:
   $('#export-field').show();
